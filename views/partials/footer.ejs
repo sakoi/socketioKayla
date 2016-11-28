@@ -1,0 +1,75 @@
+<!--
+    File Name: footer.ejs
+    Author Name: Anthony Barszcz
+    File Description: Parital to create the footer on each page.
+-->
+
+
+<!-- JavaScript -->
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    var socket = io();
+    var username = 'sakoi';
+    var $usernameInput = $('.usernameInput');
+
+    //Keeps user at bottom of chat window --Kayla
+    window.setInterval(function() {
+        var elem = document.getElementById('data');
+        elem.scrollTop = elem.scrollHeight;
+    });
+
+    //define functions socket.emit sending to server (app.js) and socket.on receiving 
+    //'new message' is for the id of the socket and $('#new-message') is for the button
+    function sendFunction() {
+        socket.emit('new message', $('#new-message').val());
+        $('#new-message').val('');
+    }
+
+    //'chat message' is for the id of the socket and $('#new-area') is for the text area
+    socket.on('chat message', function(msg) {
+        $('#messages-area').append($('<li>').text(username +': ' + msg));
+    });
+
+    socket.on('conn', function() {
+
+    });
+
+    socket.on('disconn', function() {
+        $('#messages-area').append($('<li>').text(username +' has disconnected'));
+    });
+
+    //for showing when a user is typing
+
+    var typing = false;
+    var timeout = undefined;
+
+    function timeoutFunction() {
+        typing = false;
+        socket.emit('no longer typing');
+    }
+
+    function onKeyDownNotEnter() {
+        if(typing == false) {
+            typing = true
+            socket.emit('typing');
+            timeout = setTimeout(timeoutFunction, 5000);
+        } else {
+            clearTimeout(timeout);
+            timeout = setTimeout(timeoutFunction, 5000);
+        }
+    }
+
+    socket.on('typing', function() {
+        //make a label that says typing visible?
+    });
+
+    socket.on('no longer typing', function() {
+        //hide the label that says typing?
+    });
+
+</script>
+
+<!-- Close everything out -->
+</body>
+</html>

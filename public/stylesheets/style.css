@@ -1,0 +1,90 @@
+/* Css
+   Author: Kayla Wiest
+*/
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    font: 13px Helvetica, Arial;
+    height: 100%;
+    overflow-y: hidden;
+    background-color: #3E3E3E;
+}
+
+.users{
+    width: 15em;
+    height: 100%;
+    float: left;
+    background-color: #333;
+    color: #8B8B8B;
+}
+
+.users h2 {
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container {
+    height:100%;
+    overflow:hidden;
+    position: relative;
+}
+
+.msglist {
+    max-height: 95%;
+    overflow: auto;
+}
+form {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 0;
+}
+
+form input {
+    border: 0;
+    padding: 10px 0;
+    width: 91%;
+}
+
+form button {
+    width: 9%;
+    background-color: #333;
+    color: #FFF;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#messages-area{
+    overflow: auto;
+}
+ul {
+    list-style-type: none;
+  }
+li {
+    padding: 5px 10px;
+    color: #FFF;
+
+}
+
+#messages li:nth-child(odd) {
+    background: #eee;
+}
+
+h1{
+    color: #FFF;
+    text-align: center;
+}

@@ -1,0 +1,19 @@
+<% include partials/header.ejs %>
+
+<div class="users">
+  <h2>Online - #</h2>
+</div>
+<div class="container">
+
+
+  <div id="data" class="msglist">
+
+<ul id="messages-area"></ul>
+
+    </div>
+<form id="form" onsubmit="return false;">
+  <input id="new-message" type="text" /><button onclick="sendFunction()">Send</button>
+</form>
+
+  </div>
+<% include partials/footer.ejs %>
